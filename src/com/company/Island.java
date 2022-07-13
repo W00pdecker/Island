@@ -1,14 +1,14 @@
 package com.company;
 
-public class Map {
-    private final int height;
-    private final int width;
+public class Island {
+    public final int HEIGHT;
+    public final int WIDTH;
 
     public Cell[][] cells;
 
-    public Map(int height, int width) {
-        this.height = height;
-        this.width = width;
+    public Island(int height, int width) {
+        this.HEIGHT = height;
+        this.WIDTH = width;
         this.cells = new Cell[height][width];
         for (int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
@@ -18,11 +18,11 @@ public class Map {
     }
 
     public int getHeight() {
-        return height;
+        return HEIGHT;
     }
 
     public int getWidth() {
-        return width;
+        return WIDTH;
     }
 
 
