@@ -14,15 +14,6 @@ public class Main {
 
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(16);
 
-        class TimeLine implements Runnable {
-
-            public void run() {
-                emulateThreadFactory();
-            }
-
-        }
-
-        ThreadGroup animals = new ThreadGroup("Animals");
 
 
     }
