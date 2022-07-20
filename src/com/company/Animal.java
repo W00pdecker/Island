@@ -19,6 +19,7 @@ public abstract class Animal implements Runnable{
     public int y;
     public String name; // имя животного
     public boolean isMale; // пол животного
+    public String ID;
     public boolean isPregnant = false;  // флаг "(не)беременный"
     public int pregnantCount = 0;  // счетчик дней беременности
     public boolean isDead = false; // флаг "мертвый/живой"
@@ -29,7 +30,7 @@ public abstract class Animal implements Runnable{
 
 
     public void run() {
-        while (!isDead) {
+        if (!isDead) {      //на всякий случай проверка, чтоб мертвые не ходили
             move();
             eat();
             reproduce();
@@ -40,8 +41,8 @@ public abstract class Animal implements Runnable{
 
     public void reproduce() {
         if (!isPregnant) {
-            for (Animal animal : island.cells[x][y].residents.get(className)) {
-                if (animal.isMale != isMale && !animal.isPregnant) {
+            for (Animal animal : island.cells[x][y].residents.get(className)) { // просматриваем множество животных того же типа
+                if (animal.isMale != isMale && !animal.isPregnant) { //
 
                     if (!isMale)
                         isPregnant = true;
@@ -119,5 +120,6 @@ public abstract class Animal implements Runnable{
     public void die() {
         isDead = true;
         actualAmount.getAndDecrement();
+        island.animals.remove(this);
     }
 }
