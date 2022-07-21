@@ -3,6 +3,7 @@ package com.company;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Cell {
     private int x;
@@ -22,7 +23,7 @@ public class Cell {
         this.y = y;
         this.island = island;
         Random r = new Random();
-        this.plantAmount = r.nextInt(200);
+        plantGrow();
 
     }
 
@@ -32,6 +33,10 @@ public class Cell {
             AnimalFactory.create("Wolf", x, y, island);
         if (r.nextInt(100) < 30)
             AnimalFactory.create("Rabbit", x, y, island);
+    }
+
+    public void plantGrow() {
+        plantAmount += ThreadLocalRandom.current().nextInt(200);
     }
 
     public int getX() {

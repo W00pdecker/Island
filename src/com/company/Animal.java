@@ -30,7 +30,8 @@ public abstract class Animal implements Runnable{
 
 
     public void run() {
-        if (!isDead) {      //на всякий случай проверка, чтоб мертвые не ходили
+        if (!isDead) {
+            //на всякий случай проверка, чтоб мертвые не ходили
             move();
             eat();
             reproduce();
@@ -41,7 +42,7 @@ public abstract class Animal implements Runnable{
 
     public void reproduce() {
         if (!isPregnant) {
-            for (Animal animal : island.cells[x][y].residents.get(className)) { // просматриваем множество животных того же типа
+            for (Animal animal : Island.cells[x][y].residents.get(className)) { // просматриваем множество животных того же типа
                 if (animal.isMale != isMale && !animal.isPregnant) { //
 
                     if (!isMale)
@@ -65,7 +66,7 @@ public abstract class Animal implements Runnable{
     }
 
     public void move(){ //двигаемся по острову, если упираемся в границу, меняем направление
-        int movePoints = speed;
+                int movePoints = speed;
         Direction direction = choosePath();
         while (movePoints > 0) {
             if (direction == UP) {
@@ -97,7 +98,6 @@ public abstract class Animal implements Runnable{
                 else direction = choosePath();
             }
         }
-
     }
 
     public Direction choosePath() {                 //метод, который случайным образом выбирает направление
@@ -119,7 +119,6 @@ public abstract class Animal implements Runnable{
 
     public void die() {
         isDead = true;
-        actualAmount.getAndDecrement();
-        island.animals.remove(this);
+        Island.animals.remove(this);
     }
 }

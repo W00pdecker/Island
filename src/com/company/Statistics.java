@@ -5,15 +5,13 @@ import java.util.List;
 
 public class Statistics {
 
-    Island island;
-    List<Cell> cells = Arrays.stream(island.cells).flatMap(x -> Arrays.stream(x)).toList();
+    public List<Cell> cells = Arrays.stream(Island.cells).flatMap(x -> Arrays.stream(x)).toList();
 
-    public Statistics(Island island) {
-        this.island = island;
+    public Statistics() {
     }
 
     public long countAll() {
-        return island.animals.size();
+        return Island.animals.size();
     }
 
 
@@ -27,5 +25,10 @@ public class Statistics {
         long rabbitsAmount = cells.stream().flatMap(cell -> cell.rabbits.stream()).count();
         return rabbitsAmount;
 
+    }
+
+    public Integer countPlants() {
+        Integer plantsAmount = cells.stream().map(cell -> cell.plantAmount).reduce(0, Integer::sum);
+        return plantsAmount;
     }
 }

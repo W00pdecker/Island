@@ -1,14 +1,13 @@
 package com.company;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Island {
     public final int HEIGHT;
     public final int WIDTH;
 
-    public Cell[][] cells;
-    public HashSet<Animal> animals = new HashSet<>();
+    public static Cell[][] cells;
+    public static HashSet<Animal> animals = new HashSet<>();
 
     public Island(int height, int width) {
         this.HEIGHT = height;
